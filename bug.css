@@ -1,0 +1,25 @@
+The following CSS code snippet demonstrates an uncommon error related to the `calc()` function and nested units:
+
+```css
+.element {
+  width: calc(50% - 10px);
+  height: calc(100vh - 10px);
+  background-color: lightblue;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nested {
+  width: calc(50% - calc(10px + 5%)); /* problematic line */
+  height: 100px;
+  background-color: lightgreen;
+}
+```
+
+The issue arises in the `.nested` class's `width` property where `calc()` is nested. While not syntactically incorrect, this can lead to unexpected behavior or parsing errors in some older or less compliant browsers.  The addition of percentages and pixels within the inner `calc()` can cause inconsistent results across different browsers.
