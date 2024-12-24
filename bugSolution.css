@@ -1,0 +1,35 @@
+The solution is to avoid nesting `calc()` functions with mixed units and instead simplify the calculation or use CSS variables:
+
+```css
+.element {
+  width: calc(50% - 10px);
+  height: calc(100vh - 10px);
+  background-color: lightblue;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nested {
+  /* Solution 1: Simplify calculation */
+  width: calc(50% - 15px); 
+  /* Solution 2: Pre-calculate values (if possible) */
+  /* width: 485px;  /* Example value */
+  /* Solution 3: Use CSS variables */
+  /* width: calc(var(--width) - 10px); */
+  height: 100px;
+  background-color: lightgreen;
+}
+
+/* Solution 3: Using CSS variables would require defining the variable */
+/* :root {
+  --width: 50%;
+} */
+```
+
+These solutions will prevent potential browser inconsistencies and ensure the layout renders predictably across different environments.
